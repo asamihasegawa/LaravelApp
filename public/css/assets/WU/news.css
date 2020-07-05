@@ -1,0 +1,36 @@
+.news {
+  width: 100%;
+
+}
+.news h1 {
+  width: 100%;
+  text-align: center;
+  color: #a9a9a9;
+}
+.news_contents{
+  width: 80%;
+  display: inline-block;
+}
+.news_contents ul {
+  height: 300px;
+  padding: 10px 10px 10px 30px;
+  text-align: center;
+}
+.news_contents ul li {
+  width: 25%;
+  float: left;
+  list-style: none;
+  text-decoration: none;
+}
+.news_contents ul li img {
+  width: 95%;
+}
+/*-----side_contents-----*/
+.side_contents {
+  width: 20%;
+  float: right;
+  display:inline-block;
+}
+.side_contents ul li {
+list-style: none;
+}

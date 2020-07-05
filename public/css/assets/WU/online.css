@@ -1,0 +1,27 @@
+.loginbar {
+  padding: 10px;
+  background-color: #a9a9a9;
+}
+.loginbar ul{
+  margin: 0px;
+  text-align: right;
+}
+.loginbar ul li {
+  display: inline;
+  margin: 20px;
+  text-decoration: none;
+}
+.loginbar ul li a {
+  margin: auto;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+  .online_contents {
+    width: 100%;
+    margin: 40px 30px;
+    text-align:center;
+  }
+  .col-md-4 card mb-4 shadow-sm a {
+    text-decoration: none;
+  }

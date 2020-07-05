@@ -1,0 +1,40 @@
+/*-----contact-----*/
+.contact {
+  width: 100%;
+  margin: 20px;
+  text-align:center;
+}
+.contact h1 {
+  color: #a9a9a9;
+}
+.contactform {
+
+}
+table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*-----confirm-----*/
+.confirm {
+  width: 100%;
+  margin: 20px;
+  text-align:center;
+}
+.confirm h1 {
+  color: #a9a9a9;
+}
+/*-----thanks-----*/
+.thanks {
+  margin: 250px 100px;
+  color: #a9a9a9;
+}
+.thanks h1 {
+  text-align: center;
+  color: #a9a9a9;
+}
+.thanks p {
+  color: #a9a9a9;
+  text-align:center;
+}

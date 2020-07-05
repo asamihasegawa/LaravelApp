@@ -1,0 +1,67 @@
+/*****body*****/
+body {
+  width: 100%;
+  margin: 0px;
+}
+/*-----header-----*/
+header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'HoeflerText-Regular','Hoefler Text',sans-serif;
+  font-size: 50px;
+  background-color: #a9a9a9;
+}
+header a {
+  color: white;
+  padding-left: 20px;
+  text-decoration: none;
+}
+/*-----container-----*/
+.container {
+  width: 100%;
+  overflow: hidden;
+}
+/*-----menu-----*/
+.menu {
+  width: 100%;
+  padding-bottom: 10px;
+  background-color: #a9a9a9;
+}
+.menu ul{
+  margin: 0px;
+  text-align: right;
+}
+.menu ul li {
+  display: inline;
+  margin: 20px;
+  text-decoration: none;
+}
+.menu ul li a {
+  margin: auto;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+/*-----contents-----*/
+.content {
+  width: 100%;
+ margin: 20px 0px;
+}
+/*-----footer-----*/
+footer {
+  width: 100%;
+  margin: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align:center;
+  background-color: #a9a9a9;
+  color: white;
+}
+footer ul li {
+  list-style: none;
+}
+footer ul li a{
+  font-size: 10px;
+  color: white;
+  text-decoration: none;
+}

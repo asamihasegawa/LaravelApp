@@ -1,0 +1,27 @@
+.about {
+  width: 100%;
+
+}
+.about h1 {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0px;
+  color: #a9a9a9;
+}
+.about_main {
+  margin: 30px;
+  overflow: hidden;
+}
+.about_contents{
+  width: 50%;
+  margin: auto;
+  float: left;
+  text-align: center;
+}
+.about_contents img {
+  width: 80%;
+}
+.about_contents p {
+  width: 80%;
+  margin: auto;
+}

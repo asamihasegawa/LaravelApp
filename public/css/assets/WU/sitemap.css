@@ -1,0 +1,16 @@
+.sitemap {
+  width: 100%;
+}
+.sitemap ul {
+  margin: 40px;
+  text-align: center;
+}
+.sitemap ul li {
+  margin: 20px;
+  list-style: none;
+}
+.sitemap ul li a {
+  font-size: 35px;
+  color:#b0c4de;
+  text-decoration: none;
+}
