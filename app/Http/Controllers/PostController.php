@@ -42,8 +42,8 @@ class PostController extends Controller
 
      $rules = [
          'user_id' => 'integer|required',
-         'title' => 'required',
-         'message' => 'required',
+         'tel' => 'required',
+         'address' => 'required',
      ];
      $message = [
          'user_id.integer' => 'System Error',
@@ -99,10 +99,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //public function update(Request $request, $id)
-    //{
-        //
-    //}
+    public function update(Request $request, $id)
+    {
+      $post = Post::find($id);
+      $form = $request->all();
+
+
+      unset($form['_token']);
+      $post->user_id = $request->user_id;
+      $post->name = $request->name;
+      $post->tel = $request->tel;
+      $post->address = $request->address;
+      $post->save();
+      return redirect('/admin/stockist');
+    }
 
     /**
      * Remove the specified resource from storage.

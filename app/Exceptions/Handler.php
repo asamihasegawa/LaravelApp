@@ -13,7 +13,7 @@ class Handler extends ExceptionHandler
      *
      * @var array
      */
-    /*protected $dontReport = [
+    protected $dontReport = [
         //
     ];
 
@@ -22,7 +22,7 @@ class Handler extends ExceptionHandler
      *
      * @var array
      */
-    /*protected $dontFlash = [
+    protected $dontFlash = [
         'password',
         'password_confirmation',
     ];
@@ -35,7 +35,7 @@ class Handler extends ExceptionHandler
      *
      * @throws \Exception
      */
-    /*public function report(Exception $exception)
+    public function report(Exception $exception)
     {
         parent::report($exception);
     }

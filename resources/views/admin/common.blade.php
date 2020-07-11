@@ -19,6 +19,9 @@
         <a class="nav-link" href="/admin/top">top</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/admin/news">top</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/admin/about">about</a>
       </li>
       <li class="nav-item">

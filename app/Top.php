@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Top extends Model
 {
     protected $fillable = [
-      'image_file_name'
+      'image_file_name',
     ];
 }

@@ -78,8 +78,8 @@ return [
             'model' => App\User::class,
         ],
         'admins' => [
-           'driver' => 'eloquent',
-           'model' => App\Admin::class,
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
        ],
 
         // 'users' => [
@@ -112,7 +112,7 @@ return [
        'admins' => [
            'provider' => 'admins',
            'table' => 'password_resets',
-           'expire' => 60, 
+           'expire' => 60,
        ],
    ],
 

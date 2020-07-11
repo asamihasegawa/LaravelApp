@@ -20,7 +20,6 @@ class CreateStockistPostsTable extends Migration
             $table->string('tel');
             $table->string('address');
             $table->timestamps();
-            $table->timestamps();
         });
     }
 

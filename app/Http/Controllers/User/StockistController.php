@@ -4,11 +4,14 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Post;
 
 class StockistController extends Controller
 {
   public function index()
   {
-    return view('WU.stockist.stockist');
+    $items = post::all();
+    return view('WU.stockist.stockist',['items' => $items]);
   }
+
 }

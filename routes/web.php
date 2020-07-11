@@ -21,24 +21,24 @@ Route::get('/collection','User\CollectionController@index');
 Route::get('/stockist','User\StockistController@index');
 Route::get('/online','User\OnlineController@index');
 Route::get('/sitemap','User\SitemapController@index');
-/*-----contact-----*/
+/*-----user_contact-----*/
 Route::get('/contact','User\ContactController@index')->name('contact.index');
 Route::post('/contact/confirm','User\ContactController@confirm')->name('contact.confirm');
 Route::post('/contact/thanks','User\ContactController@send')->name('contact.send');
 
 /*-----admin-----*/
-Route::resource('/admin/stockist', 'PostController');
-
-Route::get('/admin/top','Admin\TopController@index');
-Route::post('/admin/top/upload','Admin\TopController@upload')->name('top.upload');
-Route::get('/admin/about', 'Admin\AboutController@index');
 Route::get('/admin/collection', 'Admin\CollectionController@index');
 Route::get('/admin/online', 'Admin\OnlineController@index');
 
-Route::get('/admin/top','TopController@input');
-Route::post('/admin/top','TopController@upload');
-Route::get('/admin/top','TopController@output');
-
+/*------admin_top-----*/
+Route::post('admin/top', 'Admin\TopController@upload')->name('upload');
+Route::get('admin/top', 'admin\TopController@index');
+/*-----admin_news-----*/
+Route::resource('/admin/about','Admin\NewsController');
+/*-----admin_about-----*/
+Route::resource('/admin/about', 'Admin\AboutController');
+/*-----admin_stockist-----*/
+Route::resource('/admin/stockist', 'PostController');
 
 
 

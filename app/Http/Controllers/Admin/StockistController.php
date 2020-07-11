@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
+use Illuminate\Http\Request;
+use App\Stockist;
+use Illuminate\Foundation\Auth\Admin;
+use Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\About;
-use Validator;
 
-class AboutController extends Controller
+class StockistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,29 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $items = About::all();
-        return view('admin.about', ['items' => $items]);
+        return view('admin.stockist');
     }
+
+    public function upload(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|max:10240|mimes:jpeg,gif,png',
+            'comment' => 'required|max:191'
+          ]);
+          if ($validator->fails()){
+              return back()->withInput()->withErrors($validator);
+          }
+          $file = $request->file('file');
+          $path = Storage::disk('s3')->putFile('/', $file, 'public');
+
+          Post::create([
+              'image_file_name' => $path,
+              'image_title' => $request->comment
+          ]);
+
+          return redirect('/');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,27 +60,7 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-     $post = new About;
-     $form = $request->all();
-
-     $rules = [
-         'body' => 'required',
-     ];
-     $message = [
-         'body.required'=> 'bodyが入力されていません'
-     ];
-     $validator = Validator::make($form, $rules, $message);
-
-     if($validator->fails()){
-         return redirect('/admin/about')
-             ->withErrors($validator)
-             ->withInput();
-     }else{
-         unset($form['_token']);
-         $post->body = $request->body;
-         $post->save();
-         return redirect('/admin/about');
-     }
+        //
     }
 
     /**
@@ -69,8 +71,7 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-      $item = About::find($id);
-      return view('admin.about_show', ['item' => $item]);
+        //
     }
 
     /**
@@ -93,14 +94,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $post = About::find($id);
-      $form = $request->all();
-
-
-      unset($form['_token']);
-      $post->body = $request->body;
-      $post->save();
-      return redirect('/admin/about');
+        //
     }
 
     /**
@@ -111,7 +105,6 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-      $items = About::find($id)->delete();
-      return redirect('/admin/about');
+        //
     }
 }
