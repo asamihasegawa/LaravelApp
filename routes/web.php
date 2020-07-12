@@ -34,7 +34,7 @@ Route::get('/admin/online', 'Admin\OnlineController@index');
 Route::post('admin/top', 'Admin\TopController@upload')->name('upload');
 Route::get('admin/top', 'admin\TopController@index');
 /*-----admin_news-----*/
-Route::resource('/admin/about','Admin\NewsController');
+Route::resource('/admin/news','Admin\NewsController');
 /*-----admin_about-----*/
 Route::resource('/admin/about', 'Admin\AboutController');
 /*-----admin_stockist-----*/

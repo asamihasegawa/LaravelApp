@@ -25,7 +25,7 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    /*public function create()
     {
         //
     }
@@ -95,7 +95,6 @@ class AboutController extends Controller
     {
       $post = About::find($id);
       $form = $request->all();
-
 
       unset($form['_token']);
       $post->body = $request->body;

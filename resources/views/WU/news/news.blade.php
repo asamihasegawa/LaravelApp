@@ -4,24 +4,12 @@
 <div class="news">
   <h1>news</h1>
   <div class="news_contents">
-    <ul>
-      <li>
-        <a href="#"><img src="{{asset('images/IMG_2220.JPG')}}" alt=""></a><br>
-        <a href="#">title</a>
-      </li>
-      <li>
-        <a href="#"><img src="{{asset('images/IMG_2220.JPG')}}" alt=""></a><br>
-        <a href="#">title</a>
-      </li>
-      <li>
-        <a href="#"><img src="{{asset('images/IMG_2220.JPG')}}" alt=""></a><br>
-        <a href="#">title</a>
-      </li>
-      <li>
-        <a href="#"><img src="{{asset('images/IMG_2220.JPG')}}" alt=""></a><br>
-        <a href="#">title</a>
-      </li>
-    </ul>
+      @foreach($items as $item)
+        <p>{{ $item->title }}</p>
+      @endforeach
+      @foreach($items as $item)
+      <p>{{ $item->body }}</p>
+      @endforeach
   </div>
   <div class="side_contents">
     <ul>

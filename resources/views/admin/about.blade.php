@@ -17,7 +17,6 @@
         <input type="submit" class="create" value="投  稿">
     </form>
 
-    <!-- 記事描画部分 -->
     @if(count($items) > 0)
         @foreach($items as $item)
             <div class="alert alert-primary" role="alert">
