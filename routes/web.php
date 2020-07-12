@@ -82,4 +82,16 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+    Route::get('/collection', 'Admin\CollectionController@index');
+    Route::get('/online', 'Admin\OnlineController@index');
+
+    /*------admin_top-----*/
+    Route::post('top', 'Admin\TopController@upload')->name('upload');
+    Route::get('top', 'admin\TopController@index');
+    /*-----admin_news-----*/
+    Route::resource('/news','Admin\NewsController');
+    /*-----admin_about-----*/
+    Route::resource('/about', 'Admin\AboutController');
+    /*-----admin_stockist-----*/
+    Route::resource('stockist', 'PostController');
 });

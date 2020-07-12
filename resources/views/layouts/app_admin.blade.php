@@ -24,9 +24,29 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/top') }}">
+                <a class="navbar-brand" href="{{ url('/admin/home') }}">
                     amu admin
                 </a>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/top">top</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/news">news</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/about">about</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/collection">collection</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/stockist">stockist</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/online">online</a>
+                  </li>
+                </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

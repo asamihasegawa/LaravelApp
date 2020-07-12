@@ -13,7 +13,7 @@
 
 @foreach($posts as $post)
 <div class="card-header text-center">
-        <img src= {{ Storage::disk('local')->url($post->image_file_name) }} alt="" width=250px height=250px></a>
+        <img src= "{{ Storage::disk('local')->url($post->image_file_name) }}" alt="" width=250px height=250px>
     </div>
     <div class="alert alert-primary" role="alert">
             {{ $post->image_file_name }}<br>
