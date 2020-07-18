@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Stockist_post extends Model
+class Stockist extends Model
 {
-    protected $table = 'posts';
+    protected $table = 'stockist_posts';
     protected $guarded = array('id');
 }

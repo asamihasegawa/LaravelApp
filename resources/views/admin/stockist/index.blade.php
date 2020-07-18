@@ -10,14 +10,14 @@
         {{ csrf_field() }}
 
 
-        <input type="hidden" name="user_id" value="1">
-        @if($errors->has('name'))
-            <div class="error_msg">{{ $errors->first('name') }}</div>
+        <input type="hidden" name="stockist_posts_id" value="1">
+        @if($errors->has('shop_name'))
+            <div class="error_msg">{{ $errors->first('shop_name') }}</div>
         @endif
-        <input type="text" class="form" name="name" placeholder="name" value="{{ old('name') }}">
+        <input type="text" class="form" name="shop_name" placeholder="shop_name" value="{{ old('shop_name') }}">
         <br>
         @if($errors->has('tel'))
-            <div class="error_msg">{{ $errors->first('name') }}</div>
+            <div class="error_msg">{{ $errors->first('shop_name') }}</div>
         @endif
         <input type="text" class="form" name="tel" placeholder="tel" value="{{ old('tel') }}">
         <br>
@@ -33,7 +33,7 @@
     @if(count($items) > 0)
         @foreach($items as $item)
             <div class="alert alert-primary" role="alert">
-                <a href="/admin/stockist/{{ $item->id }}" class="alert-link">{{ $item->name }}</a>
+                <a href="/admin/stockist/{{ $item->id }}" class="alert-link">{{ $item->shop_name }}</a>
                 <form action="/admin/stockist/{{ $item->id }}" method="POST">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="DELETE">
