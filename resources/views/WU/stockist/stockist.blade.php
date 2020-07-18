@@ -6,7 +6,7 @@
 
   @foreach($items as $item)
       <div class="alert alert-primary" role="alert">
-          {{ $item->name }}<br>
+          {{ $item->shop_name }}<br>
           {{ $item->tel }}<br>
           {{ $item->address }}<br><br>
       </div>

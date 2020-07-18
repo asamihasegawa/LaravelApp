@@ -15,8 +15,8 @@ class CreateStockistPostsTable extends Migration
     {
         Schema::create('stockist_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('stockist_post_id');
-            $table->string('shop-name');
+            $table->integer('stockist_posts_id');
+            $table->string('shop_name');
             $table->string('tel');
             $table->string('address');
             $table->timestamps();

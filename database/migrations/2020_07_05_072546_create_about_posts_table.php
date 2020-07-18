@@ -15,7 +15,6 @@ class CreateAboutPostsTable extends Migration
     {
         Schema::create('about_posts', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->integer('about_id');
           $table->string('body');
           $table->timestamps();
 

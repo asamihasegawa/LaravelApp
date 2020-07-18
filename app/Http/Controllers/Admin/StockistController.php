@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
-use App\Stockist;
-use Illuminate\Foundation\Auth\Admin;
-use Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Stockist;
+use Validator;
 
 class StockistController extends Controller
 {
@@ -18,39 +16,19 @@ class StockistController extends Controller
      */
     public function index()
     {
-        return view('admin.stockist');
+      $items = Stockist::all();
+     return view('admin.stockist.index', ['items' => $items]);
     }
-
-    public function upload(Request $request){
-
-        $validator = Validator::make($request->all(), [
-            'file' => 'required|max:10240|mimes:jpeg,gif,png',
-            'comment' => 'required|max:191'
-          ]);
-          if ($validator->fails()){
-              return back()->withInput()->withErrors($validator);
-          }
-          $file = $request->file('file');
-          $path = Storage::disk('s3')->putFile('/', $file, 'public');
-
-          Post::create([
-              'image_file_name' => $path,
-              'image_title' => $request->comment
-          ]);
-
-          return redirect('/');
-    }
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    //public function create()
+    //{
         //
-    }
+    //}
 
     /**
      * Store a newly created resource in storage.
@@ -60,7 +38,37 @@ class StockistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $post = new Stockist;
+     $form = $request->all();
+
+     $rules = [
+         'stockist_posts_id' => 'integer|required',
+         'shop_name' => 'required',
+         'tel' => 'required',
+         'address' => 'required',
+     ];
+     $message = [
+         'stockist_posts_id.integer' => 'System Error',
+         'stockist_posts_id.' => 'System Error',
+         'shop_name.required'=> 'shop_nameが入力されていません',
+         'tel.required'=> 'telが入力されていません',
+         'address.required'=> 'addressが入力されていません'
+     ];
+     $validator = Validator::make($form, $rules, $message);
+
+     if($validator->fails()){
+         return redirect('/admin/stockist')
+             ->withErrors($validator)
+             ->withInput();
+     }else{
+         unset($form['_token']);
+         $post->stockist_posts_id = $request->stockist_posts_id;
+         $post->shop_name = $request->shop_name;
+         $post->tel = $request->tel;
+         $post->address = $request->address;
+         $post->save();
+         return redirect('/admin/stockist');
+     }
     }
 
     /**
@@ -71,7 +79,8 @@ class StockistController extends Controller
      */
     public function show($id)
     {
-        //
+      $item = Stockist::find($id);
+      return view('admin.stockist.show', ['item' => $item]);
     }
 
     /**
@@ -80,10 +89,10 @@ class StockistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    //public function edit($id)
+    //{
         //
-    }
+    //}
 
     /**
      * Update the specified resource in storage.
@@ -94,7 +103,17 @@ class StockistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $post = Stockist::find($id);
+      $form = $request->all();
+
+
+      unset($form['_token']);
+      $post->stockist_posts_id = $request->stockist_posts_id;
+      $post->shop_name = $request->shop_name;
+      $post->tel = $request->tel;
+      $post->address = $request->address;
+      $post->save();
+      return redirect('/admin/stockist');
     }
 
     /**
@@ -105,6 +124,7 @@ class StockistController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $items = Stockist::find($id)->delete();
+      return redirect('/admin/stockist');
     }
 }
