@@ -15,8 +15,6 @@ class CreateCollectionPostsTable extends Migration
     {
         Schema::create('collection_posts', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->integer('collection_posts_id');
-          $table->string('collection_file_name');
           $table->string('title');
           $table->string('body');
           $table->timestamps();

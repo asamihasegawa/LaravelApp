@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-use Validator;
 
 class PostController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-      $items = post::all();
-     return view('post.index', ['items' => $items]);
+      return view('admin/post/index');
     }
 
     /**
@@ -35,7 +34,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
       $post = new Post;
      $form = $request->all();
@@ -75,7 +74,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    /*public function show($id)
     {
       $item = Post::find($id);
       return view('post.show', ['item' => $item]);
@@ -99,7 +98,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    /*public function update(Request $request, $id)
     {
       $post = Post::find($id);
       $form = $request->all();
@@ -120,9 +119,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /*public function destroy($id)
     {
       $items = Post::find($id)->delete();
       return redirect('/admin/stockist');
-    }
+    }*/
 }

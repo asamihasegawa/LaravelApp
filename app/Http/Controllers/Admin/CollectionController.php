@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Collection;
+use Validator;
 
 class CollectionController extends Controller
 {
@@ -13,18 +15,37 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        return view('admin.collection');
+      //
     }
+
+    public function showCreateForm()
+   {
+       return view('admin/collection/collection');
+   }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Collection $request)
     {
-        //
+        $post = new Collection();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        return redirect()->route('collection.detail',[
+          'id' => $post->id,
+        ]);
     }
+
+    public function detail(Post $post)
+   {
+       return view('admin/collection/detail', [
+           'title' => $post->title,
+           'body' => $post->body,
+       ]);
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -68,7 +89,15 @@ class CollectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $post = Collection::find($id);
+      $form = $request->all();
+
+
+      unset($form['_token']);
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->save();
+      return redirect('/admin/collection');
     }
 
     /**
@@ -79,6 +108,7 @@ class CollectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $items = Collection::find($id)->delete();
+      return redirect('/admin/collection');
     }
 }
