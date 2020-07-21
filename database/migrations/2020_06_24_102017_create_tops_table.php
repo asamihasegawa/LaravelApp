@@ -15,7 +15,6 @@ class CreateTopsTable extends Migration
     {
         Schema::create('tops', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('file_id');
             $table->string('image_file_name');
             $table->timestamps();
         });

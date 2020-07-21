@@ -1,6 +1,6 @@
 @extends('admin.common')
 @section('content')
-
+<h1>top</h1>
 {!! Form::open(['route' => 'upload', 'method' => 'post','files' => true]) !!}
     <div class="form-group">
         {!! Form::label('file', '画像投稿', ['class' => 'control-label']) !!}
@@ -10,12 +10,12 @@
         {!! Form::submit('投稿', ['class' => 'btn btn-primary my-2']) !!}
     </div>
 {!! Form::close() !!}
-
+<img src="{ asset('storage/app') }}">
 @foreach($posts as $post)
 <div class="card-header text-center">
-        <img src= "{{ Storage::disk('local')->url($post->image_file_name) }}" alt="" width=250px height=250px>
+        <img src= "{{ Storage::disk('local')->url($post->image_file_name) }}">
     </div>
-    <div class="alert alert-primary" role="alert">
+    <div class="" role="">
             {{ $post->image_file_name }}<br>
     </div>
     <form action="/admin/top/{{ $post->id }}" method="POST">

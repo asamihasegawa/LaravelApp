@@ -2,10 +2,17 @@
 @section('content')
 @if ($is_image)
 <figure>
-    <img src="/storage/post_images/">
-    <figcaption>画像</figcaption>
+    <img src="{{Storage::disk('local')->url('public/post_images/123.jpeg' weight="500px")}}">
+    <figcaption>image</figcaption>
 </figure>
 @endif
+
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
 <form method="POST" action="/admin/post" enctype="multipart/form-data" >
     {{ csrf_field() }}
     <input type="file" name="photo">
@@ -20,9 +27,5 @@
     </ul>
 </div>
 @endif
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
+
 @endsection

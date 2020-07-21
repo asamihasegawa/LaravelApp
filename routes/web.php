@@ -32,7 +32,7 @@ Route::get('/admin/online', 'Admin\OnlineController@index');
 
 /*------admin_top-----*/
 Route::post('admin/top', 'Admin\TopController@upload')->name('upload');
-Route::get('admin/top', 'admin\TopController@index');
+Route::get('admin/top', 'Admin\TopController@index');
 /*-----admin_news-----*/
 Route::resource('/admin/news','Admin\NewsController');
 /*-----admin_about-----*/
@@ -43,10 +43,12 @@ Route::post('/admin/collection','Admin\CollectionController@create');
 Route::get('/admin/collection/{post}','Admin\CollectionController@detail')->name('collection.detail');
 /*-----admin_stockist-----*/
 Route::resource('/admin/stockist', 'Admin\StockistController');
+/*-----admin_online-----*/
+Route::resource('/admin/online', 'Admin\OnlineController');
 
-
+/*-----admin_post-----*/
 Route::get('/admin/post', 'PostController@index');
-Route::post('admin//post', 'PostController@store');
+Route::post('admin/post', 'PostController@store');
 
 
 
