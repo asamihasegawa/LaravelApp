@@ -2,7 +2,7 @@
 @section('content')
 @if ($is_image)
 <figure>
-    <img src="{{Storage::disk('local')->url('public/post_images/123.jpeg' weight="500px")}}">
+    <img src="{{Storage::disk('local')->url('public/post_images/123.jpeg')}}">
     <figcaption>image</figcaption>
 </figure>
 @endif

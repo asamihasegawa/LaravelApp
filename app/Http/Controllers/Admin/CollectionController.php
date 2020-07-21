@@ -28,7 +28,7 @@ class CollectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Collection $request)
+    public function create(Request $request)
     {
         $post = new Collection();
         $post->title = $request->title;

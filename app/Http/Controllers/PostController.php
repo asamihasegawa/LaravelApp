@@ -20,7 +20,7 @@ class PostController extends Controller
 
   public function store(PostRequest $request)
   {
-      $request->photo->storeAs('public/post_images', $filename. '.jpg');
+      $request->photo->storeAs('public/post_images', $time.'.jpg');
       return redirect('/admin/post')->with('success', '画像を登録しました');
   }
 }

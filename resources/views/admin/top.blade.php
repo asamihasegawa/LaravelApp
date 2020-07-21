@@ -10,10 +10,9 @@
         {!! Form::submit('投稿', ['class' => 'btn btn-primary my-2']) !!}
     </div>
 {!! Form::close() !!}
-<img src="{ asset('storage/app') }}">
 @foreach($posts as $post)
 <div class="card-header text-center">
-        <img src= "{{ Storage::disk('local')->url($post->image_file_name) }}">
+        <img src= "{{Storage::disk('local')->url('public/post_images/123.jpeg')}}">
     </div>
     <div class="" role="">
             {{ $post->image_file_name }}<br>

@@ -29,6 +29,7 @@ header a {
 }
 .menu ul{
   margin: 0px;
+  padding: 10px 40px;
   text-align: right;
 }
 .menu ul li {
