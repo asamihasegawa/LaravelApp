@@ -12,7 +12,7 @@
 {!! Form::close() !!}
 @foreach($posts as $post)
 <div class="card-header text-center">
-        <img src= "{{Storage::disk('local')->url('public/post_images/123.jpeg')}}">
+        <img src= "{{Storage::disk('local')->url('public/post_images/123.jpeg')}}"　alt="" width=500px >
     </div>
     <div class="" role="">
             {{ $post->image_file_name }}<br>
