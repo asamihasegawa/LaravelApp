@@ -1,8 +1,7 @@
 @extends('admin.common')
 @section('content')
 <link href="{{asset('css/assets/WM/top.css')}}" rel="stylesheet">
-<div class="top">
-</div>
+<h3>about</h3>
 <form action="/admin/about" method="post">
         {{ csrf_field() }}
 
