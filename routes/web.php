@@ -31,8 +31,8 @@ Route::post('/contact/thanks','User\ContactController@send')->name('contact.send
 Route::get('/admin/online', 'Admin\OnlineController@index');
 
 /*------admin_top-----*/
-Route::post('admin/top', 'Admin\TopController@upload')->name('upload');
-Route::get('admin/top', 'Admin\TopController@index');
+Route::get('/admin/top', 'Admin\TopController@index');
+Route::post('admin/top', 'Admin\TopController@store');
 /*-----admin_news-----*/
 Route::resource('/admin/news','Admin\NewsController');
 /*-----admin_about-----*/
@@ -40,15 +40,16 @@ Route::resource('/admin/about', 'Admin\AboutController');
 /*-----admin-----*/
 Route::get('/admin/collection', 'Admin\CollectionController@showCreateForm')->name('collection.create');
 Route::post('/admin/collection','Admin\CollectionController@create');
-Route::get('/admin/collection/{post}','Admin\CollectionController@detail')->name('collection.detail');
+Route::get('/admin/collection/{collection}','Admin\CollectionController@detail')->name('collection.detail');
 /*-----admin_stockist-----*/
 Route::resource('/admin/stockist', 'Admin\StockistController');
 /*-----admin_online-----*/
 Route::resource('/admin/online', 'Admin\OnlineController');
 
 /*-----admin_post-----*/
-Route::get('/admin/post', 'PostController@index');
-Route::post('admin/post', 'PostController@store');
+Route::get('/post', 'PostController@showCreateForm')->name('posts.create');
+Route::post('/post', 'PostController@create');
+Route::get('/post/{post}', 'PostController@detail')->name('posts.detail');
 
 
 

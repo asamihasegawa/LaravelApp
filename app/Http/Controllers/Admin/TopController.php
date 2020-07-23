@@ -4,45 +4,28 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Top;
 use Storage;
-use Illuminate\Foundation\Auth\Admin;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\TopRequest;
 
 
 class TopController extends Controller
 {
-  public function upload(Request $request){
+  public function index()
+  {
+       $is_image = false;
+       if (Storage::disk('local')->exists('public/top_images/' )) {
+           $is_image = true;
+       }
 
-      $validator = Validator::make($request->all(), [
-          'file' => 'required|max:10240|mimes:jpeg,gif,png'
-      ]);
+       return view('admin.top.top', ['is_image' => $is_image]);
+   }
 
-      if ($validator->fails()){
-          return back()->withInput()->withErrors($validator);
-      }
-      $file = $request->file('file');
-      $path = Storage::disk('local')->putFile('/top_images', $file, 'public');
 
-        Top::create([
-            'image_file_name' => $path
-        ]);
+  public function store(Request $request)
+  {
+      $filename = date('Y-m-d');
+      $request->photo->storeAs('public/top_images', $filename.'.jpg');
 
-        return redirect('admin/top');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-      $posts = \App\Top::all();
-
-         $data = [
-             'posts' => $posts,
-         ];
-
-         return view('admin.top',$data);
-    }
+      return redirect('/admin/top')->with('success', '画像を登録しました');
+  }
 }

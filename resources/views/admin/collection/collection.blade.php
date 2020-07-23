@@ -1,5 +1,6 @@
 @extends('admin.common')
 @section('content')
+<h3>collection</h3>
 <link href="{{asset('css/assets/WM/top.css')}}" rel="stylesheet">
 <div class="">
   <form method="post" action="{{ route('collection.create') }}" enctype="multipart/form-data">

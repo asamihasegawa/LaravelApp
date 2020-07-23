@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Top extends Model
 {
-    protected $fillable = [
-      'image_file_name','file_id',
-    ];
+    protected $fillable = ['title', 'content'];
 }

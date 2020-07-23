@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Storage;
@@ -8,22 +9,28 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-  public function index()
+  public function showCreateForm()
   {
-       $is_image = false;
-       if (Storage::disk('local')->exists('public/post_images/' )) {
-           $is_image = true;
-       }
+      return view('posts/create');
+  }
 
-       return view('admin.post.index', ['is_image' => $is_image]);
+  public function create(Request $request)
+   {
+       $post = new Post();
+       $post->title = $request->title;
+       $post->content = $request->content;
+       $post->save();
+       return redirect()->route('posts.detail', [
+           'id' => $post->id,
+       ]);
    }
 
-
-  public function store(PostRequest $request)
-  {
-      $filename = date('Y-m-d');
-      $request->photo->storeAs('public/post_images', $filename.'.jpg');
-
-      return redirect('/admin/post')->with('success', '画像を登録しました');
-  }
+   public function detail(Post $post)
+   {
+       return view('posts/detail', [
+           'title' => $post->title,
+           'content' => $post->content,
+           'user_id' => $post->user_id,
+       ]);
+   }
 }

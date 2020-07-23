@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Collection extends Model
 {
     protected $table = 'collection_posts';
-    protected $fillable = ['title','body'];
+    protected $fillable = ['title','body','collection_id'];
 }

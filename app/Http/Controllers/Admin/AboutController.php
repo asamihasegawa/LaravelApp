@@ -17,7 +17,7 @@ class AboutController extends Controller
     public function index()
     {
         $items = About::all();
-        return view('admin.about', ['items' => $items]);
+        return view('admin..about.about', ['items' => $items]);
     }
 
     /**
@@ -70,7 +70,7 @@ class AboutController extends Controller
     public function show($id)
     {
       $item = About::find($id);
-      return view('admin.about_show', ['item' => $item]);
+      return view('admin.about.about_show', ['item' => $item]);
     }
 
     /**

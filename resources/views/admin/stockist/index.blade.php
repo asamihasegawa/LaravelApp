@@ -3,9 +3,7 @@
 
 @section('content')
     @section('maincopy', '投稿してください')
-
-    <br>
-    <br>
+    <h3>stockist</h3>
     <form action="/admin/stockist" method="post">
         {{ csrf_field() }}
 

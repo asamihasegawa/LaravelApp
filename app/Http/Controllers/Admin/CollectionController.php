@@ -89,15 +89,7 @@ class CollectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $post = Collection::find($id);
-      $form = $request->all();
-
-
-      unset($form['_token']);
-      $post->title = $request->title;
-      $post->body = $request->body;
-      $post->save();
-      return redirect('/admin/collection');
+      //
     }
 
     /**
@@ -108,7 +100,6 @@ class CollectionController extends Controller
      */
     public function destroy($id)
     {
-      $items = Collection::find($id)->delete();
-      return redirect('/admin/collection');
+      //
     }
 }

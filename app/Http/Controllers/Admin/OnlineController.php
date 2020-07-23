@@ -13,7 +13,7 @@ class OnlineController extends Controller
      */
     public function index()
     {
-        return view('admin.online');
+        return view('admin.online.online');
     }
 
     /**
