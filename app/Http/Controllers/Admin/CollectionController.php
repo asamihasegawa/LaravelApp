@@ -34,9 +34,9 @@ class CollectionController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return redirect()->route('collection.detail',[
-          'id' => $post->id,
-        ]);
+        return redirect()->route('collection.detail', [
+           'id' => $post->id,
+       ]);
     }
 
     public function detail(Post $post)
