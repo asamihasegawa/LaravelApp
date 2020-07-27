@@ -33,6 +33,7 @@ Route::get('/admin/online', 'Admin\OnlineController@index');
 /*------admin_top-----*/
 Route::get('/admin/top', 'Admin\TopController@index');
 Route::post('admin/top', 'Admin\TopController@store');
+/*Route::post('/admin/top','Admin\Topcontroller@destroy');
 /*-----admin_news-----*/
 Route::resource('/admin/news','Admin\NewsController');
 /*-----admin_about-----*/

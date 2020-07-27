@@ -2,10 +2,12 @@
 @section('content')
 <h3>top</h3>
 @if ($is_image)
+@foreach($img as $i)
 <figure>
-     <img src="{{Storage::disk('local')->url('public/top_images/2020-07-23.jpg' )}}" width=500px >
-    <figcaption>image</figcaption>
+     <img src="{{Storage::disk('local')->url('public/top_images/'. $i->filename )}}" width=500px >
+    <figcaption>{{ $i->filename }}</figcaption>
 </figure>
+@endforeach
 @endif
 
 @if (session('success'))
