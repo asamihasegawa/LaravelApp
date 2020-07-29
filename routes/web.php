@@ -26,31 +26,10 @@ Route::get('/contact','User\ContactController@index')->name('contact.index');
 Route::post('/contact/confirm','User\ContactController@confirm')->name('contact.confirm');
 Route::post('/contact/thanks','User\ContactController@send')->name('contact.send');
 
-/*-----admin-----*/
-
-Route::get('/admin/online', 'Admin\OnlineController@index');
-
-/*------admin_top-----*/
-Route::get('/admin/top', 'Admin\TopController@index');
-Route::post('admin/top', 'Admin\TopController@store');
-/*Route::post('/admin/top','Admin\Topcontroller@destroy');
-/*-----admin_news-----*/
-Route::resource('/admin/news','Admin\NewsController');
-/*-----admin_about-----*/
-Route::resource('/admin/about', 'Admin\AboutController');
-/*-----admin-----*/
-Route::get('/admin/collection', 'Admin\CollectionController@showCreateForm')->name('collection.create');
-Route::post('/admin/collection','Admin\CollectionController@create');
-Route::get('/admin/collection/{collection}','Admin\CollectionController@detail')->name('collection.detail');
-/*-----admin_stockist-----*/
-Route::resource('/admin/stockist', 'Admin\StockistController');
-/*-----admin_online-----*/
-Route::resource('/admin/online', 'Admin\OnlineController');
-
 /*-----admin_post-----*/
 Route::get('/post', 'PostController@showCreateForm')->name('posts.create');
 Route::post('/post', 'PostController@create');
-Route::get('/post/{post}', 'PostController@detail')->name('posts.detail');
+Route::get('/post', 'PostController@detail')->name('posts.detail');
 
 
 
@@ -94,16 +73,26 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
-    //Route::get('/collection', 'Admin\CollectionController@index');
-    //Route::get('/online', 'Admin\OnlineController@index');
+    Route::get('/collection', 'Admin\CollectionController@index');
+    Route::get('/online', 'Admin\OnlineController@index');
 
     /*------admin_top-----*/
-    //Route::post('top', 'Admin\TopController@upload')->name('upload');
-    //Route::get('top', 'admin\TopController@index');
+    Route::get('/top', 'Admin\TopController@index');
+    Route::post('/top', 'Admin\TopController@store');
     /*-----admin_news-----*/
-    //Route::resource('/news','Admin\NewsController');
+    Route::resource('/news','Admin\NewsController');
     /*-----admin_about-----*/
-    //Route::resource('/about', 'Admin\AboutController');
+    Route::resource('/about', 'Admin\AboutController');
+    /*-----admin_collection-----*/
+    Route::get('/collection', 'Admin\CollectionController@showCreateForm')->name('collection.create');
+    Route::post('/collection','Admin\CollectionController@create');
+    Route::get('/collection/{id}','Admin\CollectionController@detail')->name('collection.detail');
     /*-----admin_stockist-----*/
-    //Route::resource('stockist', 'PostController');
+    Route::resource('/stockist', 'Admin\StockistController');
+    /*-----admin_online-----*/
+    Route::resource('/online', 'Admin\OnlineController');
+
+    Route::get('/post', 'PostController@showCreateForm')->name('posts.create');
+    Route::post('/post', 'PostController@create');
+    Route::get('/post/{post}', 'PostController@detail')->name('posts.detail');
 });

@@ -10,17 +10,31 @@ use App\Http\Requests\TopRequest;
 
 class TopController extends Controller
 {
-  public function index()
+  /*public function index()
   {
-    $img = Image::oldest()->get();
-    $img = Image::where('type', '1')->get();
 
+    $img = Image::where('type', '1')->get();
+    //$img = Image::first()->get();
 
      $is_image = false;
      if (Storage::disk('local')->exists('public/top_images/' )) {
          $is_image = true;
+
     return view('WU.top.top',['is_image' => $is_image, 'img' => $img]);
 
+  }
+ }
+ */
+
+ public function index()
+ {
+   $img = Image::where('type','1')->get();
+
+   $is_image = false;
+   if (Storage::disk('local')->exists('public/top_images/' )) {
+       $is_image = true;
+
+  return view('WU.top.top',['is_image' => $is_image, 'img' => $img]);
   }
  }
 }

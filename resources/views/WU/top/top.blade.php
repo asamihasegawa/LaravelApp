@@ -8,7 +8,7 @@
   <figure>
        <img src="{{Storage::disk('local')->url('public/top_images/'. $i->filename )}}" width=1000px >
   </figure>
-  
+  {{ $i->filename }}
   @endforeach
   @endif
 
