@@ -26,13 +26,6 @@ Route::get('/contact','User\ContactController@index')->name('contact.index');
 Route::post('/contact/confirm','User\ContactController@confirm')->name('contact.confirm');
 Route::post('/contact/thanks','User\ContactController@send')->name('contact.send');
 
-/*-----admin_post-----*/
-Route::get('/post', 'PostController@showCreateForm')->name('posts.create');
-Route::post('/post', 'PostController@create');
-Route::get('/post', 'PostController@detail')->name('posts.detail');
-
-
-
 
 Auth::routes();
 
@@ -92,7 +85,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     /*-----admin_online-----*/
     Route::resource('/online', 'Admin\OnlineController');
 
-    Route::get('/post', 'PostController@showCreateForm')->name('posts.create');
-    Route::post('/post', 'PostController@create');
-    Route::get('/post/{post}', 'PostController@detail')->name('posts.detail');
+    Route::get('/post', 'PostController@index');
+    Route::post('/post', 'PostController@store');
 });
