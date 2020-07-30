@@ -18,6 +18,7 @@ class CreateGoodsTable extends Migration
           $table->integer('goods_id');
           $table->string('name');
           $table->integer('price');
+          $table->string('filename');
           $table->timestamps();
         });
     }

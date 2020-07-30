@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CollectionRequest;
 use App\Collection;
-use Validator;
+use Storage;
+
 
 class CollectionController extends Controller
 {
@@ -15,12 +18,19 @@ class CollectionController extends Controller
      */
     public function index()
     {
-      //
+      $img = Collection::all();
+
+       $is_image = false;
+       if (Storage::disk('local')->exists('public/collection_images/' )) {
+           $is_image = true;
+       }
+
+       return view('admin.collection.collection', ['is_image' => $is_image, 'img' => $img]);
     }
 
-    public function showCreateForm()
+    /*public function showCreateForm()
    {
-       return view('admin/collection/collection');
+       /*return view('admin/collection/collection');
    }
 
     /**
@@ -28,9 +38,9 @@ class CollectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    /*public function create(Request $request)
     {
-        $post = new Collection();
+        /*$post = new Collection();
         $post->title = $request->title;
         $post->body = $request->body;
         $post->id = $request->id;
@@ -56,7 +66,18 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $dtStr = date("YmdHis") . substr(explode(".", (microtime(true) . ""))[1], 0, 3);
+      $file_name = $dtStr. '.jpg';
+
+      $img = new Collection;
+      $img->title = $request->title;
+      $img->body = $request->body;
+      $img->filename = $file_name;
+      $img->save();
+
+      $request->photo->storeAs('public/collection_images', $file_name);
+
+      return redirect('/admin/collection')->with('success', '登録しました');
     }
 
     /**

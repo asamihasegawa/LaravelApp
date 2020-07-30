@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\OnlineRequest;
+use App\Online;
+use Storage;
 
 class OnlineController extends Controller
 {
@@ -13,7 +17,14 @@ class OnlineController extends Controller
      */
     public function index()
     {
-        return view('admin.online.online');
+      $img = Online::all();
+
+       $is_image = false;
+       if (Storage::disk('local')->exists('public/online_images/' )) {
+           $is_image = true;
+       }
+
+        return view('admin.online.online', ['is_image' => $is_image, 'img' => $img]);
     }
 
     /**
@@ -34,7 +45,19 @@ class OnlineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $dtStr = date("YmdHis") . substr(explode(".", (microtime(true) . ""))[1], 0, 3);
+      $file_name = $dtStr. '.jpg';
+
+      $img = new Online;
+      $img->goods_id = $request->goods_id;
+      $img->name = $request->name;
+      $img->price = $request->price;
+      $img->filename = $file_name;
+      $img->save();
+
+      $request->photo->storeAs('public/online_images', $file_name);
+
+      return redirect('/admin/online')->with('success', '登録しました');
     }
 
     /**

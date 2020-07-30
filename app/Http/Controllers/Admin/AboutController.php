@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\AboutRequest;
 use App\About;
-use Validator;
+use Storage;
 
 class AboutController extends Controller
 {
@@ -16,8 +17,14 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $items = About::all();
-        return view('admin..about.about', ['items' => $items]);
+      $img = About::all();
+
+       $is_image = false;
+       if (Storage::disk('local')->exists('public/about_images/' )) {
+           $is_image = true;
+       }
+
+       return view('admin.about.about', ['is_image' => $is_image, 'img' => $img]);
     }
 
     /**
@@ -38,27 +45,17 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-     $post = new About;
-     $form = $request->all();
+      $dtStr = date("YmdHis") . substr(explode(".", (microtime(true) . ""))[1], 0, 3);
+      $file_name = $dtStr. '.jpg';
 
-     $rules = [
-         'body' => 'required',
-     ];
-     $message = [
-         'body.required'=> 'bodyが入力されていません'
-     ];
-     $validator = Validator::make($form, $rules, $message);
+      $img = new About;
+      $img->body = $request->body;
+      $img->filename = $file_name;
+      $img->save();
 
-     if($validator->fails()){
-         return redirect('/admin/about')
-             ->withErrors($validator)
-             ->withInput();
-     }else{
-         unset($form['_token']);
-         $post->body = $request->body;
-         $post->save();
-         return redirect('/admin/about');
-     }
+      $request->photo->storeAs('public/about_images', $file_name);
+
+      return redirect('/admin/about')->with('success', '登録しました');
     }
 
     /**
@@ -69,8 +66,7 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-      $item = About::find($id);
-      return view('admin.about.about_show', ['item' => $item]);
+     //
     }
 
     /**
@@ -91,7 +87,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    /*public function update(Request $request, $id)
     {
       $post = About::find($id);
       $form = $request->all();
@@ -110,7 +106,7 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-      $items = About::find($id)->delete();
+      $img = About::find($id)->delete();
       return redirect('/admin/about');
     }
 }

@@ -76,14 +76,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::resource('/news','Admin\NewsController');
     /*-----admin_about-----*/
     Route::resource('/about', 'Admin\AboutController');
+    //Route::get('/about', 'Admin\AboutController@index');
+    //Route::post('/about', 'Admin\AboutController@store');
     /*-----admin_collection-----*/
-    Route::get('/collection', 'Admin\CollectionController@showCreateForm')->name('collection.create');
-    Route::post('/collection','Admin\CollectionController@create');
-    Route::get('/collection/{id}','Admin\CollectionController@detail')->name('collection.detail');
+    Route::get('/collection', 'Admin\CollectionController@index');
+    Route::post('/collection','Admin\CollectionController@store');
     /*-----admin_stockist-----*/
     Route::resource('/stockist', 'Admin\StockistController');
     /*-----admin_online-----*/
-    Route::resource('/online', 'Admin\OnlineController');
+    Route::get('/online', 'Admin\OnlineController@index');
+    Route::post('/online','Admin\OnlineController@store');
+
 
     Route::get('/post', 'PostController@index');
     Route::post('/post', 'PostController@store');

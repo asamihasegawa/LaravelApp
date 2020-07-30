@@ -2,32 +2,59 @@
 @section('content')
 <link href="{{asset('css/assets/WM/top.css')}}" rel="stylesheet">
 <h3>about</h3>
-<form action="/admin/about" method="post">
-        {{ csrf_field() }}
+@if ($is_image)
+@foreach($img as $i)
+<figure>
+     <img src="{{Storage::disk('local')->url('public/about_images/'. $i->filename )}}" width=500px >
+    <figcaption>{{ $i->filename }}</figcaption>
+    {{ $i->body }}<br>
+</figure>
+<form action="/admin/about" method="DELETE">
+{{ csrf_field() }}
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" class="delete" value="削除">
+</form>
+@endforeach
+@endif
+<br>
+<br>
+<br>
 
-        <!-- value仮入れ(Userモデルとリレーションするのに必要) -->
-        <input type="hidden" name="user_id" value="1">
-        @if($errors->has('body'))
-            <div class="error_msg">{{ $errors->first('body') }}</div>
-        @endif
-        <div>
-            <textarea class="form" name="body" placeholder="メッセージ">{{ old('body') }}</textarea>
-        </div>
-        <input type="submit" class="create" value="投  稿">
-    </form>
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+    @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+    </ul>
+</div>
+@endif
 
-    @if(count($items) > 0)
-        @foreach($items as $item)
-            <div class="alert alert-primary" role="alert">
-                <a href="/admin/about/{{ $item->id }}" class="alert-link">{{ $item->body }}</a>
-                <form action="/admin/about/{{ $item->id }}" method="POST">
-                {{ csrf_field() }}
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" class="delete" value="削除">
-                </form>
-            </div>
-        @endforeach
-    @else
-        <div>投稿記事がありません</div>
+<form method="POST" action="/admin/about" enctype="multipart/form-data" >
+    {{ csrf_field() }}
+    <input type="file" name="photo">
+　　<br>
+    @if($errors->has('body'))
+        <div class="error_msg">{{ $errors->first('body') }}</div>
     @endif
+    <textarea class="form" name="body" placeholder="テキスト">{{ old('body') }}</textarea>
+    <br>
+
+    <input type="submit">
+
+</form>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+    @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+    </ul>
+</div>
+@endif
 @endsection

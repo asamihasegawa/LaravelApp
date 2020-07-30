@@ -17,6 +17,7 @@ class CreateCollectionPostsTable extends Migration
           $table->bigIncrements('id');
           $table->string('title');
           $table->string('body');
+          $table->string('filename');
           $table->timestamps();
         });
     }

@@ -5,15 +5,21 @@
   <h1>about</h1>
   <div class="about_main">
     <div class="about_contents">
-     <img src="{{asset('images/about.jpg')}}" alt="about">
+      @if ($is_image)
+      @foreach($img as $i)
+     <img src="{{Storage::disk('local')->url('public/about_images/'. $i->filename )}}" width=1000px >
+     @endforeach
+     @endif
     </div>
     <div class="about_contents">
      <p>
-       @foreach($items as $item)
            <div class="alert alert-primary" role="alert">
-               {{ $item->body }}
+            @if ($is_image)
+            @foreach($img as $i)
+            {{ $i->body }}
+            @endforeach
+            @endif
            </div>
-       @endforeach
      </p>
     </div>
   </div>
