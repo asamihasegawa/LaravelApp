@@ -28,7 +28,8 @@ class TopController extends Controller
 
  public function index()
  {
-   $img = Image::where('type','1')->get();
+   $img = Image::where('type','1')->orderBy('created_at','desc')->first();
+   //$img = Image::where('type','1')->get();
 
    $is_image = false;
    if (Storage::disk('local')->exists('public/top_images/' )) {

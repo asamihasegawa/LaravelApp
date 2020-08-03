@@ -4,11 +4,9 @@
 
 <div class="top">
   @if ($is_image)
-  @foreach($img as $i)
   <figure>
-       <img src="{{Storage::disk('local')->url('public/top_images/'. $i->filename )}}" width=1000px >
+   <img src="{{Storage::disk('local')->url('public/top_images/'. $img->filename )}}" width=1000px >
   </figure>
-  @endforeach
   @endif
 
 </div>
