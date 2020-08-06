@@ -66,7 +66,8 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-     //
+     $img = About::find($id);
+     return view('admin.about.detail',['img' => $img]);
     }
 
     /**
@@ -87,7 +88,7 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
       $post = About::find($id);
       $form = $request->all();

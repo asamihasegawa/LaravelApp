@@ -70,22 +70,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('/online', 'Admin\OnlineController@index');
 
     /*------admin_top-----*/
-    Route::get('/top', 'Admin\TopController@index');
-    Route::post('/top', 'Admin\TopController@store');
+    Route::resource('/top', 'Admin\TopController');
     /*-----admin_news-----*/
     Route::resource('/news','Admin\NewsController');
     /*-----admin_about-----*/
     Route::resource('/about', 'Admin\AboutController');
-    //Route::get('/about', 'Admin\AboutController@index');
-    //Route::post('/about', 'Admin\AboutController@store');
     /*-----admin_collection-----*/
-    Route::get('/collection', 'Admin\CollectionController@index');
-    Route::post('/collection','Admin\CollectionController@store');
+    Route::resource('/collection','Admin\CollectionController');
     /*-----admin_stockist-----*/
     Route::resource('/stockist', 'Admin\StockistController');
     /*-----admin_online-----*/
-    Route::get('/online', 'Admin\OnlineController@index');
-    Route::post('/online','Admin\OnlineController@store');
+    Route::resource('/online', 'Admin\OnlineController');
 
 
     Route::get('/post', 'PostController@index');

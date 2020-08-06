@@ -41,9 +41,35 @@ class TopController extends Controller
       return redirect('/admin/top')->with('success', '画像を登録しました');
   }
 
-  /*public function destroy($id)
+
+  public function show($id)
+  {
+    $img = Image::find($id);
+    return view('admin.top.detail', ['img' => $img]);
+  }
+
+  public function edit($id)
+  {
+    $img = Image::find($id);
+    return view('admin.top.detail', ['img' => $img]);
+  }
+
+  public function update(Request $request, $id)
+  {
+    $post = Image::find($id);
+    $form = $request->all();
+
+
+    unset($form['_token']);
+    $post->filename = $request->filename;
+    $post->created_at = $request->created_at;
+    $post->save();
+    return redirect('/admin/top');
+  }
+
+  public function destroy($id)
   {
     $img = Image::find($id)->delete();
     return redirect('/admin/top');
-  }*/
+  }
 }

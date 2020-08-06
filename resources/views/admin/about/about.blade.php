@@ -2,39 +2,8 @@
 @section('content')
 <link href="{{asset('css/assets/WM/top.css')}}" rel="stylesheet">
 <h3>about</h3>
-@if ($is_image)
-@foreach($img as $i)
-<figure>
-     <img src="{{Storage::disk('local')->url('public/about_images/'. $i->filename )}}" width=500px >
-    <figcaption>{{ $i->filename }}</figcaption>
-    {{ $i->body }}<br>
-</figure>
-<form action="/admin/about" method="DELETE">
-{{ csrf_field() }}
-<input type="hidden" name="_method" value="DELETE">
-<input type="submit" class="delete" value="削除">
-</form>
-@endforeach
-@endif
 <br>
 <br>
-<br>
-
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-    @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
-    </ul>
-</div>
-@endif
-
 <form method="POST" action="/admin/about" enctype="multipart/form-data" >
     {{ csrf_field() }}
     <input type="file" name="photo">
@@ -57,4 +26,31 @@
     </ul>
 </div>
 @endif
+<br>
+<br>
+<div class="">
+    <div class="row">
+      @foreach($img as $i)
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+         <img src="{{Storage::disk('local')->url('public/about_images/'. $i->filename )}}" width=100% >
+          <div class="card-body">
+            <p class="card-text"　>{{ $i->created_at }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='/admin/about/{{ $i->id }}'" >編集</button>
+
+                <form action="/admin/about/{{ $i->id }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn btn-sm btn-outline-secondary" value="削除">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     @endforeach
+    </div>
+  </div>
 @endsection

@@ -88,7 +88,8 @@ class CollectionController extends Controller
      */
     public function show($id)
     {
-        //
+      $img = Collection::find($id);
+      return view('admin.collection.detail', ['img' => $img]);
     }
 
     /**
@@ -99,7 +100,7 @@ class CollectionController extends Controller
      */
     public function edit($id)
     {
-        //
+      //
     }
 
     /**
@@ -111,7 +112,16 @@ class CollectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-      //
+      $post = Collection::find($id);
+      $form = $request->all();
+
+
+      unset($form['_token']);
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->filename = $request->filename;
+      $post->save();
+      return redirect('/admin/collection');
     }
 
     /**
@@ -122,6 +132,7 @@ class CollectionController extends Controller
      */
     public function destroy($id)
     {
-      //
+      $img = Collection::find($id)->delete();
+      return redirect('/admin/collection');
     }
 }
