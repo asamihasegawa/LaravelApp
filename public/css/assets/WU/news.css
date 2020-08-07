@@ -1,6 +1,7 @@
 .news {
   width: 80%;
   margin: auto;
+  padding-bottom: 20px;
 }
 .news h1 {
   width: 100%;
@@ -10,16 +11,17 @@
 }
 .news_contents{
   width: 80%;
-  margin: auto;
+  margin: 10px auto;
 }
-.news_title p{
+.news_title h3 {
   color: #a9a9a9;
-  font-size: x-large;
 }
-.news_body p {
+.news_title p {
   color: #a9a9a9;
   font-size: medium;
+  white-space: pre-wrap;
 }
+
 /*.news_contents ul {
   height: 300px;
   padding: 10px 10px 10px 30px;

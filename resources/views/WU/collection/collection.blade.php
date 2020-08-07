@@ -21,7 +21,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-                  <button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='/collection/{{ $i->id }}'">CHECK</button>
                 </div>
               </div>
             </div>

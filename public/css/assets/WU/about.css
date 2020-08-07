@@ -1,13 +1,13 @@
 .about {
   width: 100%;
-
+  padding-bottom: 20px;
 }
 .about h1 {
   width: 100%;
   text-align: center;
   margin: 10px 0px;
   color: #a9a9a9;
-  font: 300 60px 'Oswald', sans-serif; 
+  font: 300 60px 'Oswald', sans-serif;
 }
 .about_main {
   margin: 30px;

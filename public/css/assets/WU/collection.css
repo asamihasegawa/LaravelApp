@@ -8,3 +8,38 @@
   margin: 20px;
   font: 300 60px 'Oswald', sans-serif;
 }
+p {
+  color: #a9a9a9;
+}
+
+/*-----detail----*/
+.collection_detail {
+  margin: 20px;
+}
+.collection_detail img{
+  width: 50%;
+}
+.collection_detail p {
+  color: #a9a9a9;
+}
+.radius-pixel-30 {
+  border-radius: 30px;
+  text-align: center;
+  color: #ffff;
+  background-color: #a9a9a9;
+  border: solid #a9a9a9;
+}
+.btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #a9a9a9;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #a9a9a9;
+}
+
+a.btn--radius {
+   border-radius: 100vh;
+}

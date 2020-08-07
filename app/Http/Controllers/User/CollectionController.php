@@ -18,4 +18,9 @@ class CollectionController extends Controller
     return view('WU.collection.collection',['is_image' => $is_image, 'img' => $img]);
   }
  }
+ public function show($id)
+ {
+   $img = Collection::find($id);
+   return view('WU.collection.detail', ['img' => $img]);
+ }
 }

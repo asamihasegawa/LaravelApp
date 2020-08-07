@@ -6,12 +6,9 @@
   <div class="news_contents">
     <div class="news_title">
       @foreach($items as $item)
-        <p>{{ $item->title }}</p>
-      @endforeach
-    </div>
-    <div class="news_body">
-      @foreach($items as $item)
-      <p>{{ $item->body }}</p>
+        <h3>{{ $item->title }}</h3>
+        <p>{{ $item->body }}</p>
+        <br>
       @endforeach
     </div>
   </div>

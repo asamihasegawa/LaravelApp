@@ -5,10 +5,11 @@
   <h1>stokist</h1>
 
   @foreach($items as $item)
-      <div class="" role="alert">
-          {{ $item->shop_name }}<br>
-          {{ $item->tel }}<br>
-          {{ $item->address }}<br><br>
+      <div id="cp_iptxt" >
+        <p>{{ $item->shop_name }}</p>
+        <p>{{ $item->tel }}</p>
+        <p>{{ $item->address }}</p>
+          <br>
       </div>
   @endforeach
 </div>

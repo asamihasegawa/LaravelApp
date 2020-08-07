@@ -6,21 +6,30 @@
   <h1>confirm</h1>
   <form action="{{route('contact.send')}}" method="POST">
   @csrf
-      NAME
-      {{ $inputs['name'] }}
+      <div id="cp_iptxt">
+      <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+      <p>{{ $inputs['name'] }}</p>
       <input name="name" value="{{ $inputs['name'] }}" type="hidden">
+      </div>
       <br>
-      EMAIL
-      {{ $inputs['email'] }}
+      <div id="cp_iptxt">
+      <i class="fas fa-envelope"></i>
+      <p>{{ $inputs['email'] }}</p>
       <input name="email" value="{{ $inputs['email'] }}" type="hidden">
+      </div>
       <br>
-      TEL
-      {{ $inputs['tel'] }}
+      <div id="cp_iptxt">
+      <i class="fas fa-phone"></i>
+      <p>{{ $inputs['tel'] }}</p>
       <input name="tel" value="{{ $inputs['tel'] }}" type="hidden">
-
-      お問い合わせ内容
-      {!! nl2br(e($inputs['body'])) !!}
+      </div>
+      <br>
+      <div id="cp_iptxt">
+      <i class="fas fa-comment"></i>
+      <p>{!! nl2br(e($inputs['body'])) !!}</p>
       <input name="body" value="{{ $inputs['body'] }}" type="hidden">
+      </div>
+
 
   <br>
   <button class="btn btn-border-shadow btn-border-shadow--color2" type="button" name="action" value="back" onclick="history.back()">

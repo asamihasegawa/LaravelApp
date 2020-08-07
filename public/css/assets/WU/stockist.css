@@ -5,4 +5,33 @@
 }
 .stokist h1{
   color: #a9a9a9;
+  font: 300 60px 'Oswald', sans-serif;
+  margin-bottom: 20px;
+}
+#cp_iptxt {
+	position: relative;
+	width: 27.33%;
+	margin: auto;
+}
+#cp_iptxt i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 9px 5px;
+	transition: 0.3s;
+	color: #a9a9a9;
+}
+#cp_iptxt::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #a9a9a9;
+}
+#cp_iptxt p {
+  color: #a9a9a9;
+	font-size: large;
 }

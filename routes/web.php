@@ -17,7 +17,7 @@ Route::get('/', function () {return view('welcome');});
 Route::get('/top','User\TopController@index');
 Route::get('/news','User\NewsController@index');
 Route::get('/about','User\AboutController@index');
-Route::get('/collection','User\CollectionController@index');
+Route::resource('/collection','User\CollectionController');
 Route::get('/stockist','User\StockistController@index');
 Route::get('/online','User\OnlineController@index');
 Route::get('/sitemap','User\SitemapController@index');
