@@ -7,6 +7,7 @@
   text-align: center;
   margin: 10px 0px;
   color: #a9a9a9;
+  font: 300 60px 'Oswald', sans-serif; 
 }
 .about_main {
   margin: 30px;
@@ -20,8 +21,12 @@
 }
 .about_contents img {
   width: 80%;
+  margin: auto;
 }
 .about_contents p {
   width: 80%;
-  margin: auto;
+  margin: 30% auto;
+  white-space: pre-wrap;
+  font-size: large;
+  color: #a9a9a9;
 }

@@ -1,10 +1,13 @@
 @extends('admin.common')
 @section('content')
+<link href="{{asset('css/assets/WM/collection.css')}}" rel="stylesheet">
 <h2>collection</h2>
 <br>
   <form method="POST" action="/admin/collection" enctype="multipart/form-data" >
       {{ csrf_field() }}
-      <input type="file" name="photo">
+      <div class="file">
+          <input class="radius-pixel-30" type="file" name="photo">
+      </div>
   　　<br>
      <br>
 
@@ -21,7 +24,7 @@
       <br>
       <br>
 
-      <input type="submit">
+      <input class="radius-pixel-30"　type="submit" value="登　録">
 
   </form>
   @if ($errors->any())

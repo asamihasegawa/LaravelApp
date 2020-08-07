@@ -1,17 +1,26 @@
 .news {
-  width: 100%;
-
+  width: 80%;
+  margin: auto;
 }
 .news h1 {
   width: 100%;
   text-align: center;
   color: #a9a9a9;
+  font: 300 60px 'Oswald', sans-serif;
 }
 .news_contents{
   width: 80%;
-  display: inline-block;
+  margin: auto;
 }
-.news_contents ul {
+.news_title p{
+  color: #a9a9a9;
+  font-size: x-large;
+}
+.news_body p {
+  color: #a9a9a9;
+  font-size: medium;
+}
+/*.news_contents ul {
   height: 300px;
   padding: 10px 10px 10px 30px;
   text-align: center;
@@ -26,7 +35,7 @@
   width: 95%;
 }
 /*-----side_contents-----*/
-.side_contents {
+/*.side_contents {
   width: 20%;
   float: right;
   display:inline-block;

@@ -4,23 +4,16 @@
 <div class="news">
   <h1>news</h1>
   <div class="news_contents">
+    <div class="news_title">
       @foreach($items as $item)
         <p>{{ $item->title }}</p>
       @endforeach
+    </div>
+    <div class="news_body">
       @foreach($items as $item)
       <p>{{ $item->body }}</p>
       @endforeach
-  </div>
-  <div class="side_contents">
-    <ul>
-      <li>2020.6</li>
-      <li>2020.5</li>
-      <li>2020.4</li>
-      <li>2020.3</li>
-    </ul>
-  </div>
-  <div class="">
-
+    </div>
   </div>
 </div>
 @endsection

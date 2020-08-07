@@ -11,7 +11,7 @@
     @if($errors->has('body'))
         <div class="error_msg">{{ $errors->first('body') }}</div>
     @endif
-    <textarea class="form" name="body" placeholder="テキスト">{{ old('body') }}</textarea>
+    <textarea class="form" rows="10" cols="20" name="body" placeholder="テキスト">{{ old('body') }}</textarea>
     <br>
 
     <input type="submit">

@@ -20,6 +20,7 @@ header a {
 .container {
   width: 100%;
   overflow: hidden;
+  margin: 0px;
 }
 /*-----menu-----*/
 .menu {
@@ -57,6 +58,9 @@ footer {
   text-align:center;
   background-color: #a9a9a9;
   color: white;
+}
+footer ul {
+  padding-left: 0px;
 }
 footer ul li {
   list-style: none;

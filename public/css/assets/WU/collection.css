@@ -1,8 +1,10 @@
 .collection {
-  width: 100%;
-  margin: 20px;
+  width: 95%;
+  margin: 20px auto;
   text-align:center;
 }
-.collection h1 {
+ h1 {
   color: #a9a9a9;
+  margin: 20px;
+  font: 300 60px 'Oswald', sans-serif;
 }

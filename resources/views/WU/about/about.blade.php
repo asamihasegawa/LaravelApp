@@ -12,15 +12,13 @@
      @endif
     </div>
     <div class="about_contents">
-     <p>
-           <div class="alert alert-primary" role="alert">
+      <div class="about_contents_2">
             @if ($is_image)
             @foreach($img as $i)
-            {{ $i->body }}
+            <p>{{ $i->body }}</p>
             @endforeach
             @endif
            </div>
-     </p>
     </div>
   </div>
 </div>
